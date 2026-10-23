@@ -1360,3 +1360,18 @@ footer i {
   flex: 1;
   height: auto;
 }
+.science-lab { margin-top: 30px; }
+.science-tabs, .science-structures { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+.science-tabs button, .science-structures button, .organ-button { border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; background: var(--panel); }
+.science-tabs [aria-selected=true], .science-structures [aria-pressed=true] { border-color: var(--mint); color: var(--mint); background: #16342f; }
+.science-panel { padding: 24px; border: 1px solid var(--border); border-radius: 16px; background: var(--panel); }
+.science-panel h3 { font-size: 22px; margin: 0 0 8px; }
+.science-panel > p { color: #a6b3c2; line-height: 1.7; margin-bottom: 20px; }
+.science-panel a, .science-lab .section-heading a { color: var(--mint); }
+.science-panel label { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+.organ-popup { display: grid; gap: 8px; padding: 12px; border: 1px solid #334454; border-radius: 8px; background: #101b28; color: #e9eef3; max-width: 320px; box-shadow: 0 10px 30px #0008; }
+.organ-popup [role=option] { padding: 8px; cursor: pointer; }
+.organ-popup [data-highlighted] { background: #23303c; }
+.science-panel [data-slot=organ-viewer] { min-height: 28rem; }
+.science-panel button:focus-visible, .science-tabs button:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+@media(max-width: 600px) { .science-panel { padding: 12px; } }

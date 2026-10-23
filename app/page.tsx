@@ -23,9 +23,10 @@ import {
   Check,
 } from "lucide-react";
 import Viewer from "@/components/Viewer";
+import LifeSciences from "@/components/LifeSciences";
 import { models, units } from "@/lib/data";
 import { useStudio } from "@/lib/store";
-type Tab = "Explore" | "Syllabus" | "Resource hub";
+type Tab = "Explore" | "Syllabus" | "Resource hub" | "Life sciences";
 const icons = { heart: Heart, brain: Brain, dna: Dna, membrane: Layers3 };
 const resources = [
   {
@@ -103,8 +104,8 @@ export default function Home() {
         </button>
         <div className="workspace-label">YOUR LEARNING SPACE</div>
         <nav>
-          {(["Explore", "Syllabus", "Resource hub"] as Tab[]).map((t, i) => {
-            const Icon = [Box, BookOpen, Layers3][i];
+          {(["Explore", "Syllabus", "Resource hub", "Life sciences"] as Tab[]).map((t, i) => {
+            const Icon = [Box, BookOpen, Layers3, FlaskConical][i];
             return (
               <button
                 key={t}
@@ -210,7 +211,7 @@ export default function Home() {
             <div className="page-heading">
               <div>
                 <h1>
-                  {tab === "Explore" ? (
+                  {tab === "Life sciences" ? (<>Life, at <span>every scale.</span></>) : tab === "Explore" ? (
                     <>
                       Small details.
                       <br />
@@ -229,8 +230,7 @@ export default function Home() {
                   )}
                 </h1>
                 <p>
-                  {tab === "Explore"
-                    ? "Go beyond the textbook. Explore the living world in a whole new dimension."
+                  {tab === "Life sciences" ? "Anatomy, clinical signals, molecules and image exploration." : tab === "Explore" ? "Go beyond the textbook. Explore the living world in a whole new dimension."
                     : tab === "Syllabus"
                       ? "Ten units. One connected living world. Start wherever curiosity takes you."
                       : "Thoughtful study materials to support your next discovery."}
@@ -242,7 +242,7 @@ export default function Home() {
                 <span>BIOLOGY · SRI LANKA</span>
               </div>
             </div>
-            {tab === "Explore" ? (
+            {tab === "Life sciences" ? <LifeSciences /> : tab === "Explore" ? (
               <>
                 <div className="stats-row">
                   <div>
