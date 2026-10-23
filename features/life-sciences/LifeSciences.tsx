@@ -5,17 +5,11 @@ import { useId, useRef, useState, type ComponentType } from "react";
 
 const panels = {
   anatomy: dynamic(() => import("./AnatomyPanel")),
-  clinical: dynamic(() => import("./ClinicalPanel")),
-  molecules: dynamic(() => import("./MoleculePanel")),
-  imaging: dynamic(() => import("./ImagingPanel")),
 } satisfies Record<string, ComponentType>;
 
 type ToolId = keyof typeof panels;
 const tools: { id: ToolId; label: string }[] = [
   { id: "anatomy", label: "3D anatomy" },
-  { id: "clinical", label: "Clinical charts" },
-  { id: "molecules", label: "Molecules" },
-  { id: "imaging", label: "Medical images" },
 ];
 
 export default function LifeSciences() {
