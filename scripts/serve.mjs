@@ -21,7 +21,12 @@ http
       );
       const file = resolve(
         root,
-        "." + (pathname === "/" ? "/index.html" : pathname),
+        "." +
+          (pathname === "/"
+            ? "/index.html"
+            : extname(pathname)
+              ? pathname
+              : pathname.replace(/\/$/, "") + ".html"),
       );
       if (!file.startsWith(root + sep)) {
         res.writeHead(403).end();

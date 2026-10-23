@@ -1,3 +1,4 @@
+import AppShell from "@/components/layout/AppShell";
 import type { Metadata } from "next";
 // @ts-ignore Next.js resolves global CSS imports at build time.
 import "./globals.css";
@@ -11,7 +12,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   );
 }

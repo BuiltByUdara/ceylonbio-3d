@@ -9,15 +9,20 @@ npm install
 npm run dev
 ```
 
-Visit http://localhost:3000. Use `npm run typecheck` and `npm run build` for validation. Production builds export static files to `out/`; deploy that folder to static hosting.
+Visit http://localhost:3000. Run `npm run check` for source types, regression tests and formatting, then `npm run build` for production validation. Production builds export static files to `out/`; deploy that folder to static hosting. `npm start` serves that export locally with support for direct page URLs.
 
 ## Structure
 
-- `app/page.tsx`: responsive workspace, syllabus outline, searchable resource hub.
+- `app/page.tsx`: Explore entry point; dedicated routes at `/explore`, `/syllabus`, `/resource-hub`, and `/life-sciences`.
+- `components/layout/`: persistent app shell, navigation, page headings and footer.
+- `features/`: separate Explore, Syllabus, Resources and Life sciences features.
 - `components/Viewer.tsx`: lazy 3D loading, WebGL detection, render error boundary, accessible structure selectors, animation and camera controls.
 - `components/Scene.tsx`: procedural heart, brain regions, double helix and phospholipid bilayer using React Three Fiber and Drei.
-- `lib/data.ts`: typed syllabus and bilingual structure data.
+- `lib/models.ts` and `lib/syllabus.ts`: typed biology models, bilingual structures and syllabus records.
 - `lib/store.ts`: Zustand learning session state.
+- `tests/`: regression tests for resource filtering/downloads, data consistency, demo generation and model-selection state.
+
+See [the architecture guide](docs/architecture.md) for component boundaries, state ownership and instructions for adding pages, models, resources and life science tools. Use `npm run format` to apply the project's formatting conventions.
 
 The models are simplified educational schematics inspired by anatomy explorers, created procedurally. The separate Life sciences lab integrates OrganUI source and its attributed heart asset. They are not medically precise models. Syllabus topic outlines follow the requested unit organization. Sinhala terminology should receive teacher review before classroom publication. The language toggle switches structure terminology; structure details remain in English and the selected title shows both languages.
 
@@ -34,4 +39,3 @@ The requested Next.js 14 line has security advisories reported by npm audit, inc
 The Life sciences navigation tab uses adapted OrganUI source for the heart viewer, ECG trace, molecule viewer and image viewer. Source is vendored in `components/organui/`; its MIT licence is retained there. UI primitives are adapted to the project's React 18 / Tailwind 3 setup using Base UI. Upstream: https://organui.com/ and https://github.com/organui/organui (registry retrieved 2026-10-23).
 
 The heart uses OrganUI's pinned remote GLB and preserves BodyParts3D attribution and CC BY 4.0 links. Loading it requires network access; the viewer provides retry and error states. Existing procedural models in Explore remain separate. The molecular example uses original idealised water coordinates, the ECG is synthetic, and the image viewer uses a generated synthetic phantom with 12 slices, not patient images. Source components support loading other molecular and imaging data, but no patient upload or diagnostic workflow is provided.
-

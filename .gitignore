@@ -4,3 +4,5 @@ out
 *.tsbuildinfo
 .env*.local
 .next-organui
+.next-routes-check
+.test-build

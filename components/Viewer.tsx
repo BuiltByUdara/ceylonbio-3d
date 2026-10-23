@@ -1,16 +1,16 @@
 "use client";
-import dynamic from "next/dynamic";
-import { Component, ReactNode, useEffect, useState } from "react";
+import { models, structures } from "@/lib/models";
+import { useStudio } from "@/lib/store";
 import {
-  RotateCcw,
-  Pause,
-  Play,
+  Box,
   Maximize2,
   MousePointer2,
-  Box,
+  Pause,
+  Play,
+  RotateCcw,
 } from "lucide-react";
-import { models, structures } from "@/lib/data";
-import { useStudio } from "@/lib/store";
+import dynamic from "next/dynamic";
+import { Component, ReactNode, useEffect, useState } from "react";
 const Scene = dynamic(() => import("./Scene"), {
   ssr: false,
   loading: () => (
@@ -39,7 +39,10 @@ class Boundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   }
 }
 export default function Viewer() {
-  const { model, selected, select, sinhala } = useStudio();
+  const model = useStudio((state) => state.model);
+  const selected = useStudio((state) => state.selected);
+  const select = useStudio((state) => state.select);
+  const sinhala = useStudio((state) => state.sinhala);
   const [playing, setPlaying] = useState(true),
     [reset, setReset] = useState(0),
     [webgl, setWebgl] = useState<boolean | null>(null);

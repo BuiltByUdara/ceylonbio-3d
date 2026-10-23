@@ -1,6 +1,8 @@
 import { create } from "zustand";
-import type { ModelId } from "./data";
+import type { ModelId } from "./models";
 type State = {
+  expandedUnitId: number | null;
+  setExpandedUnit: (unitId: number | null) => void;
   sinhala: boolean;
   toggleLanguage: () => void;
   model: ModelId;
@@ -10,6 +12,8 @@ type State = {
   visited: ModelId[];
 };
 export const useStudio = create<State>((set) => ({
+  expandedUnitId: null,
+  setExpandedUnit: (unitId) => set({ expandedUnitId: unitId }),
   sinhala: false,
   toggleLanguage: () => set((s) => ({ sinhala: !s.sinhala })),
   model: "heart",

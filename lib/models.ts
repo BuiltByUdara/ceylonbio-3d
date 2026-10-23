@@ -118,15 +118,18 @@ export const structures: Record<ModelId, Structure[]> = {
     },
   ],
 };
-export const models: {
+export type BiologyModel = {
   id: ModelId;
   title: string;
   subtitle: string;
   unit: number;
   tag: string;
-}[] = [
+  category: string;
+};
+export const models: BiologyModel[] = [
   {
     id: "heart",
+    category: "Circulation",
     title: "The human heart",
     subtitle: "Follow the rhythm of life.",
     unit: 5,
@@ -134,6 +137,7 @@ export const models: {
   },
   {
     id: "brain",
+    category: "Coordination",
     title: "The human brain",
     subtitle: "Explore the architecture of thought.",
     unit: 5,
@@ -141,6 +145,7 @@ export const models: {
   },
   {
     id: "dna",
+    category: "Molecular biology",
     title: "DNA double helix",
     subtitle: "Decode the blueprint of life.",
     unit: 6,
@@ -148,33 +153,10 @@ export const models: {
   },
   {
     id: "membrane",
+    category: "Cell biology",
     title: "Cell membrane",
     subtitle: "Discover a living boundary.",
     unit: 2,
     tag: "Phospholipid bilayer",
   },
-];
-export const units = [
-  [
-    "Introduction to Biology & Chemicals of Life",
-    "Biomolecules, water & the scientific method",
-  ],
-  ["Structure and Function of Cell", "Organelles, membranes & cell division"],
-  ["Diversity of Organisms", "Kingdoms, viruses, bacteria, plants & animals"],
-  ["Plant Form and Function", "Photosynthesis, transpiration & hormones"],
-  [
-    "Animal Form and Function",
-    "Digestive, circulatory, nervous, endocrine, excretory & reproductive systems",
-  ],
-  [
-    "Genetics & Molecular Biology",
-    "DNA, inheritance, transcription & translation",
-  ],
-  ["Recombinant DNA Technology", "Gene cloning, vectors & genetic engineering"],
-  [
-    "Environmental Biology & Ecology",
-    "Sri Lankan biomes, ecosystems & endemic species",
-  ],
-  ["Applied Biology", "Agriculture, tissue culture & aquaculture"],
-  ["Microbiology", "Microbial growth, metabolism & applications"],
 ];

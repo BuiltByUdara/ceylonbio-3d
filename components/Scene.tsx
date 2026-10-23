@@ -1,11 +1,11 @@
 "use client";
-import { Suspense, useRef } from "react";
-import { Canvas, ThreeEvent, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei/core/OrbitControls";
-import { ContactShadows } from "@react-three/drei/core/ContactShadows";
-import * as THREE from "three";
-import { structures, ModelId } from "@/lib/data";
+import { ModelId, structures } from "@/lib/models";
 import { useStudio } from "@/lib/store";
+import { ContactShadows } from "@react-three/drei/core/ContactShadows";
+import { OrbitControls } from "@react-three/drei/core/OrbitControls";
+import { Canvas, ThreeEvent, useFrame } from "@react-three/fiber";
+import { Suspense, useRef } from "react";
+import * as THREE from "three";
 type PartProps = {
   id: string;
   color: string;
@@ -20,7 +20,8 @@ function Part({
   scale = [1, 1, 1],
   size = 0.7,
 }: PartProps) {
-  const { selected, select } = useStudio();
+  const selected = useStudio((state) => state.selected);
+  const select = useStudio((state) => state.select);
   return (
     <mesh
       position={position}
